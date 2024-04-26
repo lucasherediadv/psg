@@ -8,17 +8,17 @@ import (
 	"strings"
 )
 
-func passGen(wordlist string, wordCount int, sep string) (string, error) {
-	// Read words from the specified file
+func readWords(wordlist string) ([]string, error) {
 	content, err := os.ReadFile(wordlist)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	// Split the content into individual words
 	words := strings.Split(string(content), "\n")
+	return words, nil
+}
 
-	// Generate the passphrase
+func passGen(words []string, wordCount int, sep string) (string, error) {
 	var passphrase []string
 	for i := 0; i < wordCount; i++ {
 		randomIndex, err := rand.Int(rand.Reader, big.NewInt(int64(len(words))))
@@ -36,7 +36,13 @@ func main() {
 	wordCount := 8
 	separator := "-"
 
-	passphrase, err := passGen(wordlist, wordCount, separator)
+	words, err := readWords(wordlist)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	passphrase, err := passGen(words, wordCount, separator)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
