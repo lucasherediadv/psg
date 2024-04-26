@@ -8,9 +8,9 @@ import (
 	"strings"
 )
 
-func generate(filename string, wordCount int, sep string) (string, error) {
+func generate(wordlist string, wordCount int, sep string) (string, error) {
 	// Read words from the specified file
-	content, err := os.ReadFile(filename)
+	content, err := os.ReadFile(wordlist)
 	if err != nil {
 		return "", err
 	}
@@ -32,11 +32,11 @@ func generate(filename string, wordCount int, sep string) (string, error) {
 }
 
 func main() {
-	filename := "wordlists/eff_large_wordlist.txt"
+	wordlist := "wordlist/eff_large_wordlist.txt"
 	wordCount := 8
 	separator := "-"
 
-	passphrase, err := generate(filename, wordCount, separator)
+	passphrase, err := generate(wordlist, wordCount, separator)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
