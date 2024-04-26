@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func generate(wordlist string, wordCount int, sep string) (string, error) {
+func passGen(wordlist string, wordCount int, sep string) (string, error) {
 	// Read words from the specified file
 	content, err := os.ReadFile(wordlist)
 	if err != nil {
@@ -36,7 +36,7 @@ func main() {
 	wordCount := 8
 	separator := "-"
 
-	passphrase, err := generate(wordlist, wordCount, separator)
+	passphrase, err := passGen(wordlist, wordCount, separator)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
