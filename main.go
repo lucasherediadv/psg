@@ -2,10 +2,16 @@ package main
 
 import (
 	"crypto/rand"
+	"flag"
 	"fmt"
 	"math/big"
 	"os"
 	"strings"
+)
+
+var (
+	wordCount = flag.Int("count", 8, "Number of words in the passphrase")
+	separator = flag.String("sep", "-", "Separator between words")
 )
 
 func readWords(wordlist string) ([]string, error) {
@@ -32,9 +38,9 @@ func passGen(words []string, wordCount int, sep string) (string, error) {
 }
 
 func main() {
-	wordlist := "wordlist/eff_large_wordlist.txt"
-	wordCount := 8
-	separator := "-"
+	flag.Parse()
+
+	wordlist := "eff_large_wordlist.txt"
 
 	words, err := readWords(wordlist)
 	if err != nil {
@@ -42,7 +48,7 @@ func main() {
 		return
 	}
 
-	passphrase, err := passGen(words, wordCount, separator)
+	passphrase, err := passGen(words, *wordCount, *separator)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
