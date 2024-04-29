@@ -40,7 +40,7 @@ func passGen(words []string, wordCount int, sep string) (string, error) {
 func main() {
 	flag.Parse()
 
-	wordlist := "eff_large_wordlist.txt"
+	wordlist := "wordlist/eff_large_wordlist.txt"
 
 	words, err := readWords(wordlist)
 	if err != nil {
