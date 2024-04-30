@@ -8,16 +8,17 @@ import (
 )
 
 var (
-	wordCount = flag.Int("c", 8, "Number of words in the passphrase")
-	separator = flag.String("s", "-", "Separator between words")
-    showUsage = flag.Bool("h", false, "Show usage information")
+	wordCount = flag.Int("count", 8, "Number of words in the passphrase")
+	separator = flag.String("sep", "-", "Separator between words")
+    showUsage = flag.Bool("help", false, "Show usage information")
 )
 
 func Execute() {
 	flag.Parse()
 
     if *showUsage {
-        fmt.Println("Usage: passgen [options]")
+        fmt.Println("Generate secure passphrases using the diceware method\n")
+        fmt.Println("Usage: \n  passgen [options]\n")
         fmt.Println("Options:")
         flag.PrintDefaults()
         return
