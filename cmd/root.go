@@ -1,31 +1,23 @@
 package cmd
 
 import (
-	"flag"
-	"fmt"
+	"os"
 
-	"github.com/lucasherediadv/passgen/gen"
+	"github.com/spf13/cobra"
 )
 
-var (
-	wordCount = flag.Int("count", 8, "Number of words in the passphrase")
-	separator = flag.String("sep", "-", "Separator between words")
-)
+var rootCmd = &cobra.Command{
+	Use:   "psg",
+	Short: "Generate secure passphrases",
+	Long:  `Passphrase generator inspired by the diceware method to generate secure and memorable passphrases.`,
+}
 
 func Execute() {
-	flag.Parse()
-
-	words, err := gen.ReadWords()
+	err := rootCmd.Execute()
 	if err != nil {
-		fmt.Println("Error:", err)
-		return
+		os.Exit(1)
 	}
+}
 
-	passphrase, err := gen.PassGen(words, *wordCount, *separator)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Println(passphrase)
+func init() {
 }
