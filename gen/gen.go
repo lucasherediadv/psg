@@ -9,8 +9,8 @@ import (
 )
 
 var WordLists = map[string][]string {
-	"en": {"gen/wordlist/wordlist_en.txt", "English"},
-	"es": {"gen/wordlist/wordlist_es.txt", "Español"},
+	"en": {"gen/wordlists/wordlist_en.txt", "English"},
+	"es": {"gen/wordlists/wordlist_es.txt", "Español"},
 }
 
 func GeneratePassphrase(length int, separator string, capitalize bool, randomNumber bool, wordList string) (string, error) {
