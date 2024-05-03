@@ -25,6 +25,7 @@ func GeneratePassphrase(length int, separator string, capitalize bool) (string, 
 		passphrase = append(passphrase, words[randomIndex.Int64()])
 	}
 
+	// Capitalize every word in the passphrase
 	if capitalize {
 		for i, word := range passphrase {
 			passphrase[i] = strings.Title(word)
