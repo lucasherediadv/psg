@@ -7,7 +7,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "psg",
+	Use:   "passgen",
 	Short: "Generate secure passphrases",
 	Long:  `Passphrase generator inspired by the diceware method to generate secure and memorable passphrases.`,
 }

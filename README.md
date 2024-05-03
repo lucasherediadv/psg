@@ -1,10 +1,10 @@
-# Psg
+# Passgen
 
-Passphrase generator inspired by the diceware method to generate secure and memorable passphrases. Psg comes from "passphrase generator".
+Passphrase generator inspired by the diceware method to generate secure and memorable passphrases.
 
-By default, psg generates a passphrases of 6 words, each separated by a hyphen, through the `phrase` command:
+By default, passgen generates a passphrases of 6 words, each separated by a hyphen, through the `phrase` command:
 
 ```
-$ psg phrase
+$ passgen phrase
 luster-diabetes-skydiver-riveter-selector-reforest
 ```

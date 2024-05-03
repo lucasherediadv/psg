@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/lucasherediadv/psg/gen"
+	"github.com/lucasherediadv/passgen/gen"
 )
 
 var phraseCmd = &cobra.Command{
@@ -24,7 +24,13 @@ var phraseCmd = &cobra.Command{
 			return
 		}
 
-		passphrase, err := gen.GeneratePassphrase(length, separator)
+		capitalize, err := cmd.Flags().GetBool("capitalize")
+		if err != nil {
+			fmt.Println("Error getting capitalize: ", err)
+			return
+		}
+
+		passphrase, err := gen.GeneratePassphrase(length, separator, capitalize)
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
@@ -39,4 +45,5 @@ func init() {
 
 	phraseCmd.Flags().IntP("length", "l", 6, "Number of words in the passphrase")
 	phraseCmd.Flags().StringP("separator", "s", "-", "Separator character between words in the passphrase")
+	phraseCmd.Flags().BoolP("capitalize", "c", false, "Capitalize every word in the passphrase")
 }

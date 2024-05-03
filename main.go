@@ -1,6 +1,6 @@
 package main
 
-import "github.com/lucasherediadv/psg/cmd"
+import "github.com/lucasherediadv/passgen/cmd"
 
 func main() {
 	cmd.Execute()
