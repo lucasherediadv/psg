@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GeneratePassphrase(length int, separator string, capitalize bool) (string, error) {
+func GeneratePassphrase(length int, separator string, capitalize bool, randomNumber bool) (string, error) {
 	wordList := "gen/wordlist/eff_large_wordlist.txt"
 	content, err := os.ReadFile(wordList)
 	if err != nil {
@@ -22,7 +22,18 @@ func GeneratePassphrase(length int, separator string, capitalize bool) (string, 
 		if err != nil {
 			return "", err
 		}
-		passphrase = append(passphrase, words[randomIndex.Int64()])
+		word := words[randomIndex.Int64()]
+
+		// Add a random number (0-9) to the end of every word if randomNumber is true
+		if randomNumber {
+			randomNum, err := rand.Int(rand.Reader, big.NewInt(9))
+			if err != nil {
+				return "", err
+			}
+			word += randomNum.String()
+		}
+
+		passphrase = append(passphrase, word)
 	}
 
 	// Capitalize every word in the passphrase
