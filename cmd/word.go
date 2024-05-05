@@ -31,5 +31,5 @@ var wordCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(wordCmd)
 
-	wordCmd.Flags().IntP("length", "l", 20, "Number of characters in the password")
+	wordCmd.Flags().IntP("length", "l", 20, "number of characters in the password")
 }

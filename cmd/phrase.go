@@ -55,9 +55,9 @@ var phraseCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(phraseCmd)
 
-	phraseCmd.Flags().StringP("word-list", "w", "en", "Language from the wordlist")
-	phraseCmd.Flags().IntP("length", "l", 6, "Number of words in the passphrase")
-	phraseCmd.Flags().StringP("separator", "s", "-", "Separator character between words in the passphrase")
-	phraseCmd.Flags().BoolP("random-number", "r", false, "Add a random number to the end of each word in the passphrase")
-	phraseCmd.Flags().BoolP("capitalize", "c", false, "Capitalize every word in the passphrase")
+	phraseCmd.Flags().StringP("word-list", "w", "en", "language from the wordlist\n  available languages: en, es")
+	phraseCmd.Flags().IntP("length", "l", 6, "number of words in the passphrase")
+	phraseCmd.Flags().StringP("separator", "s", "-", "separator character between words in the passphrase")
+	phraseCmd.Flags().BoolP("random-number", "r", false, "add a random number to the end of each word in the passphrase")
+	phraseCmd.Flags().BoolP("capitalize", "c", false, "capitalize every word in the passphrase")
 }
