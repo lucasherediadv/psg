@@ -13,7 +13,7 @@ var WordLists = map[string][]string {
 	"es": {"gen/wordlists/wordlist_es.txt", "Español"},
 }
 
-func GeneratePassphrase(length int, separator string, capitalize bool, randomNumber bool, wordList string) (string, error) {
+func GeneratePassphrase(length int, separator string, capitalize bool, wordList string) (string, error) {
 	wordListFile, ok := WordLists[wordList]
 	if !ok {
 		return "", fmt.Errorf("Not a valid word list: %s", wordList)
@@ -33,15 +33,6 @@ func GeneratePassphrase(length int, separator string, capitalize bool, randomNum
 			return "", err
 		}
 		word := words[randomIndex.Int64()]
-
-		// Add a random number (0-9) to the end of every word if randomNumber is true
-		if randomNumber {
-			randomNum, err := rand.Int(rand.Reader, big.NewInt(9))
-			if err != nil {
-				return "", err
-			}
-			word += randomNum.String()
-		}
 
 		passphrase = append(passphrase, word)
 	}
