@@ -30,19 +30,13 @@ var phraseCmd = &cobra.Command{
 			return
 		}
 
-		randomNumber, err := cmd.Flags().GetBool("random-number")
-		if err != nil {
-			fmt.Println("Error getting randomNumber: ", err)
-			return
-		}
-
 		capitalize, err := cmd.Flags().GetBool("capitalize")
 		if err != nil {
 			fmt.Println("Error getting capitalize: ", err)
 			return
 		}
 
-		passphrase, err := gen.GeneratePassphrase(length, separator, capitalize, randomNumber, wordList)
+		passphrase, err := gen.GeneratePassphrase(length, separator, capitalize, wordList)
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
@@ -58,6 +52,5 @@ func init() {
 	phraseCmd.Flags().StringP("word-list", "w", "en", "language from the wordlist\n  available languages: en, es")
 	phraseCmd.Flags().IntP("length", "l", 6, "number of words in the passphrase")
 	phraseCmd.Flags().StringP("separator", "s", "-", "separator character between words in the passphrase")
-	phraseCmd.Flags().BoolP("random-number", "r", false, "add a random number to the end of each word in the passphrase")
 	phraseCmd.Flags().BoolP("capitalize", "c", false, "capitalize every word in the passphrase")
 }
