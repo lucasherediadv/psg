@@ -1,25 +1,16 @@
 package gen
 
 import (
-	"fmt"
 	"crypto/rand"
 	"math/big"
 	"os"
 	"strings"
 )
 
-var WordLists = map[string][]string {
-	"en": {"gen/wordlists/wordlist_en.txt", "English"},
-	"es": {"gen/wordlists/wordlist_es.txt", "Español"},
-}
+var WordList = "gen/wordlist/eff_large_wordlist.txt"
 
-func GeneratePassphrase(length int, separator string, capitalize bool, wordList string) (string, error) {
-	wordListFile, ok := WordLists[wordList]
-	if !ok {
-		return "", fmt.Errorf("Not a valid word list: %s", wordList)
-	}
-
-	content, err := os.ReadFile(wordListFile[0])
+func GeneratePassphrase(length int, separator string, capitalize bool) (string, error) {
+	content, err := os.ReadFile(WordList)
 	if err != nil {
 		return "", err
 	}
