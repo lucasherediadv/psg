@@ -44,6 +44,6 @@ func init() {
 	rootCmd.AddCommand(phraseCmd)
 
 	phraseCmd.Flags().IntP("length", "l", 8, "number of words in the passphrase")
-	phraseCmd.Flags().StringP("separator", "s", " ", "separator character between words in the passphrase")
+	phraseCmd.Flags().StringP("separator", "s", "-", "separator character between words in the passphrase")
 	phraseCmd.Flags().BoolP("capitalize", "c", false, "capitalize every word in the passphrase")
 }
