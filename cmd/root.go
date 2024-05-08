@@ -8,11 +8,14 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "passgen",
-	Short: "Generate secure passphrases",
-	Long:  `Passphrase generator inspired by the diceware method to generate secure and memorable passphrases.`,
+	Short: "Pass generator",
+	Long:  `Generate secure passphrases and passwords`,
 }
 
 func Execute() {
+	// Disable default completion command
+	rootCmd.CompletionOptions.DisableDefaultCmd = true
+
 	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
