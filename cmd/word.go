@@ -14,13 +14,13 @@ var wordCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		length, err := cmd.Flags().GetInt("length")
 		if err != nil {
-			fmt.Println("Error getting length: ", err)
+			fmt.Println("Error getting length: %v", err)
 			return
 		}
 
 		password, err := gen.GeneratePassword(length)
 		if err != nil {
-			fmt.Println("Error: ", err)
+			fmt.Println("Error generating the password: %w", err)
 			return
 		}
 

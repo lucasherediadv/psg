@@ -2,30 +2,32 @@ package gen
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
+	"crypto/rand"
+	"math/big"
 )
 
 const (
 	upper   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	lower   = "abcdefghijklmnopqrstuvwxyz"
 	digits  = "0123456789"
-	symbols = "!@#$%^&*()_+{}[]|:;<>,.?/~"
+	symbols = "!@#$%^&*"
 )
 
 func GeneratePassword(length int) (string, error) {
-	if length <= 6 {
-		return "", fmt.Errorf("Invalid password length. Password must be 6 character or more.")
+	if length <= 8 {
+		return "", fmt.Errorf("Password length must be greater than 8 characters.")
 	}
 
 	allCharacters := upper + lower + digits + symbols
 
-	rand.Seed(time.Now().UnixNano())
-
 	var password string
 	for i := 0; i < length; i++ {
-		char := allCharacters[rand.Intn(len(allCharacters))]
-
+		index, err := rand.Int(rand.Reader, big.NewInt(int64(len(allCharacters))))
+		if err != nil {
+			return "", err
+		}
+		
+		char := allCharacters[index.Int64()]
 		password += string(char)
 	}
 
