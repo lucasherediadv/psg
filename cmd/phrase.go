@@ -14,25 +14,25 @@ var phraseCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		length, err := cmd.Flags().GetInt("length")
 		if err != nil {
-			fmt.Println("Error getting length: ", err)
+			fmt.Println("Error getting length: %v", err)
 			return
 		}
 
 		separator, err := cmd.Flags().GetString("separator")
 		if err != nil {
-			fmt.Println("Error getting separator: ", err)
+			fmt.Println("Error getting separator: %v", err)
 			return
 		}
 
 		capitalize, err := cmd.Flags().GetBool("capitalize")
 		if err != nil {
-			fmt.Println("Error getting capitalize: ", err)
+			fmt.Println("Error getting capitalize: %v", err)
 			return
 		}
 
 		passphrase, err := gen.GeneratePassphrase(length, separator, capitalize)
 		if err != nil {
-			fmt.Println("Error:", err)
+			fmt.Println("Error generating passphrase: %v", err)
 			return
 		}
 
