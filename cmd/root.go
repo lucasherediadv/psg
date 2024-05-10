@@ -17,6 +17,9 @@ func Execute() error {
 	// Disable default completion command
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 
+	// Remove timestamp in generated documentation
+	rootCmd.DisableAutoGenTag = true
+
 	// Generate markdown documentation
 	err := doc.GenMarkdownTree(rootCmd, "./doc")
 	if err != nil {
