@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-var WordList = "gen/wordlist/eff_large_wordlist.txt"
+var wordList = "gen/wordlist/eff_large_wordlist.txt"
 
 func GeneratePassphrase(length int, separator string, capitalize bool) (string, error) {
-	content, err := os.ReadFile(WordList)
+	content, err := os.ReadFile(wordList)
 	if err != nil {
 		return "", err
 	}
