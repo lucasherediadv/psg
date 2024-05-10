@@ -2,37 +2,43 @@ package gen
 
 import (
 	"crypto/rand"
+	_ "embed"
+	"fmt"
 	"math/big"
-	"os"
 	"strings"
 )
 
-var wordList = "gen/wordlist/eff_large_wordlist.txt"
+//go:embed "wordlist/eff_large_wordlist.txt"
+var wordList string
+
+var words = strings.Split(wordList, "\n")
 
 func GeneratePassphrase(length int, separator string, capitalize bool) (string, error) {
-	content, err := os.ReadFile(wordList)
-	if err != nil {
-		return "", err
+	if len(words) == 0 {
+		return "", fmt.Errorf("Word list is empty")
 	}
 
-	words := strings.Split(string(content), "\n")
+	if length <= 0 || length > 100 {
+		return "", fmt.Errorf("Passphrase length must be a positive integer and not exceed 100")
+	}
 
-	var passphrase []string
+	if separator == "" {
+		return "", fmt.Errorf("Separator must not be empty")
+	}
+
+	passphrase := make([]string, length)
 	for i := 0; i < length; i++ {
 		randomIndex, err := rand.Int(rand.Reader, big.NewInt(int64(len(words))))
 		if err != nil {
-			return "", err
+			return "", fmt.Errorf("Failed to generate random index: %w", err)
 		}
 		word := words[randomIndex.Int64()]
 
-		passphrase = append(passphrase, word)
-	}
-
-	// Capitalize every word in the passphrase
-	if capitalize {
-		for i, word := range passphrase {
-			passphrase[i] = strings.Title(word)
+		if capitalize {
+			word = strings.Title(word)
 		}
+
+		passphrase[i] = word
 	}
 
 	return strings.Join(passphrase, separator), nil
