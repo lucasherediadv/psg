@@ -9,7 +9,7 @@ Passgen is a command-line tool that generates secure and memorable passphrases a
 To install passgen you will need to install Go and then run:
 
 ```
-$ go install github.com/lucasherediadv/passgen
+$ go install github.com/lucasherediadv/passgen@latest
 ```
 
 ### Generating passphrases and passwords
