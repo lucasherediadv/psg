@@ -12,6 +12,8 @@ To install passgen you will need to install Go and then run:
 go install github.com/lucasherediadv/passgen@latest
 ```
 
+Passgen will be installed in $GOPATH/bin/passgen.
+
 ### Generating passphrases and passwords
 
 If you need to generate a passphrase:
