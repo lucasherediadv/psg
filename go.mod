@@ -1,6 +1,6 @@
 module github.com/lucasherediadv/passgen
 
-go 1.21.9
+go 1.22.3
 
 require github.com/spf13/cobra v1.8.0
 
