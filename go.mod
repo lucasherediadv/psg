@@ -1,4 +1,4 @@
-module github.com/lucasherediadv/passgen
+module github.com/lucasherediadv/psg
 
 go 1.22.3
 

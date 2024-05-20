@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/lucasherediadv/passgen/gen"
+	"github.com/lucasherediadv/psg/gen"
 	"github.com/spf13/cobra"
 )
 
