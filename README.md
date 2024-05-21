@@ -12,8 +12,6 @@ To install psg you will need to install Go and then run:
 go install github.com/lucasherediadv/psg@latest
 ```
 
-Psg will be installed in $GOPATH/bin/psg.
-
 ### Generating passphrases and passwords
 
 If you need to generate a passphrase:
