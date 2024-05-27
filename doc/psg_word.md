@@ -13,6 +13,7 @@ psg word [flags]
 ### Options
 
 ```
+  -e, --entropy      calculate password entropy
   -h, --help         help for word
   -l, --length int   number of characters in the password (default 20)
 ```

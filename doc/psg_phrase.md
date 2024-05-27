@@ -14,6 +14,7 @@ psg phrase [flags]
 
 ```
   -c, --capitalize         capitalize every word in the passphrase
+  -e, --entropy            calculate passphrase entropy
   -h, --help               help for phrase
   -l, --length int         number of words in the passphrase (default 8)
   -s, --separator string   separator character between words in the passphrase (default "-")
