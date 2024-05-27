@@ -18,13 +18,31 @@ var wordCmd = &cobra.Command{
 			return
 		}
 
+		upper, err := cmd.Flags().GetBool("upper")
+		if err != nil {
+			fmt.Println("Error getting upper: %v", err)
+			return
+		}
+
+		numbers, err := cmd.Flags().GetBool("numbers")
+		if err != nil {
+			fmt.Println("Error getting numbers: %v", err)
+			return
+		}
+
+		symbols, err := cmd.Flags().GetBool("symbols")
+		if err != nil {
+			fmt.Println("Error getting symbols: %v", err)
+			return
+		}
+
 		entropy, err := cmd.Flags().GetBool("entropy")
 		if err != nil {
 			fmt.Println("Error getting entropy: %v", err)
 			return
 		}
 
-		password, err := gen.GeneratePassword(length)
+		password, err := gen.GeneratePassword(length, upper, numbers, symbols)
 		if err != nil {
 			fmt.Println("Error generating the password: %v", err)
 			return
@@ -43,4 +61,8 @@ func init() {
 
 	wordCmd.Flags().IntP("length", "l", 20, "number of characters in the password")
 	wordCmd.Flags().BoolP("entropy", "e", false, "calculate password entropy")
+	wordCmd.Flags().BoolP("symbols", "s", false, "Include symbols in the password")
+	wordCmd.Flags().BoolP("upper", "u", false, "Include upper case in the password")
+	wordCmd.Flags().BoolP("numbers", "n", false, "Include numbers in the password")
+
 }
