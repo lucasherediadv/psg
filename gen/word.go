@@ -13,7 +13,7 @@ const (
 	symbolChars = "!@#$%^&*()-_=+{}[]|:;<>,.?/~`"
 )
 
-func GeneratePassword(length int, upper bool, numbers bool, symbols bool,) (string, error) {
+func GeneratePassword(length int, upper bool, numbers bool, symbols bool) (string, error) {
 	if length <= 8 {
 		return "", fmt.Errorf("Password length must be greater than 8 characters.")
 	}
