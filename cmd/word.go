@@ -51,7 +51,7 @@ var wordCmd = &cobra.Command{
 		fmt.Println(password)
 		if entropy {
 			passwordEntropy := gen.CalculateEntropy(password)
-			fmt.Printf("Entropy of the generated password: %.0f bits\n", passwordEntropy)
+			fmt.Printf("Entropy of the generated password: %f bits\n", passwordEntropy)
 		}
 	},
 }

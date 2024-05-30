@@ -45,7 +45,7 @@ var phraseCmd = &cobra.Command{
 		fmt.Println(passphrase)
 		if entropy {
 			passphraseEntropy := gen.CalculateEntropy(passphrase)
-			fmt.Printf("Entropy of the generated passphrase: %.0f bits\n", passphraseEntropy)
+			fmt.Printf("Entropy of the generated passphrase: %f bits\n", passphraseEntropy)
 		}
 	},
 }
