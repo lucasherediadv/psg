@@ -8,7 +8,7 @@ import (
 func CalculateEntropy(password string) float64 {
 	var charsetSize float64
 
-	charsets := []string{
+	charsets := []string {
 		"abcdefghijklmnopqrstuvwxyz",
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 		"0123456789",
