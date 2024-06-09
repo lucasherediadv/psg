@@ -30,12 +30,6 @@ var phraseCmd = &cobra.Command{
 			return
 		}
 
-		entropy, err := cmd.Flags().GetBool("entropy")
-		if err != nil {
-			fmt.Println("Error getting entropy: %v", err)
-			return
-		}
-
 		passphrase, err := gen.GeneratePassphrase(length, separator, capitalize)
 		if err != nil {
 			fmt.Println("Error generating passphrase: %v", err)
@@ -43,10 +37,6 @@ var phraseCmd = &cobra.Command{
 		}
 
 		fmt.Println(passphrase)
-		if entropy {
-			passphraseEntropy := gen.CalculateEntropy(passphrase)
-			fmt.Printf("Entropy of the generated passphrase: %f bits\n", passphraseEntropy)
-		}
 	},
 }
 
@@ -56,5 +46,4 @@ func init() {
 	phraseCmd.Flags().IntP("length", "l", 8, "number of words in the passphrase")
 	phraseCmd.Flags().StringP("separator", "s", "-", "separator character between words in the passphrase")
 	phraseCmd.Flags().BoolP("capitalize", "c", false, "capitalize every word in the passphrase")
-	phraseCmd.Flags().BoolP("entropy", "e", false, "calculate passphrase entropy")
 }

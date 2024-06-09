@@ -36,12 +36,6 @@ var wordCmd = &cobra.Command{
 			return
 		}
 
-		entropy, err := cmd.Flags().GetBool("entropy")
-		if err != nil {
-			fmt.Println("Error getting entropy: %v", err)
-			return
-		}
-
 		password, err := gen.GeneratePassword(length, upper, numbers, symbols)
 		if err != nil {
 			fmt.Println("Error generating the password: %v", err)
@@ -49,10 +43,6 @@ var wordCmd = &cobra.Command{
 		}
 
 		fmt.Println(password)
-		if entropy {
-			passwordEntropy := gen.CalculateEntropy(password)
-			fmt.Printf("Entropy of the generated password: %f bits\n", passwordEntropy)
-		}
 	},
 }
 
@@ -60,7 +50,6 @@ func init() {
 	rootCmd.AddCommand(wordCmd)
 
 	wordCmd.Flags().IntP("length", "l", 20, "number of characters in the password")
-	wordCmd.Flags().BoolP("entropy", "e", false, "calculate password entropy")
 	wordCmd.Flags().BoolP("symbols", "s", false, "Include symbols in the password")
 	wordCmd.Flags().BoolP("upper", "u", false, "Include upper case in the password")
 	wordCmd.Flags().BoolP("numbers", "n", false, "Include numbers in the password")
