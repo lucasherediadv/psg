@@ -1,8 +1,6 @@
 ## Psg
 
-Psg is a command-line tool that generates secure and memorable passphrases and cryptographically secure random passwords. It uses the [diceware](https://theworld.com/~reinhold/diceware.html) method and the Go [crypto/rand](https://pkg.go.dev/crypto/rand) package to create strong and reliable passwords.
-
-## Usage
+Psg is a command-line tool that generates memorable passphrases and cryptographically secure passwords. It uses the [diceware](https://theworld.com/~reinhold/diceware.html) method and the Go [crypto/rand](https://pkg.go.dev/crypto/rand) package to create strong passphrases and passwords.
 
 ### Installation
 
@@ -18,14 +16,14 @@ If you need to generate a passphrase:
 
 ```
 psg phrase
-crop-gab-skimmed-petty-basket-lyrics-blooper-neuter
+cesarean-marrow-baking-triumph-urgency-scrambler-maximize-bloomers
 ```
 
 If you need to generate a password:
 
 ```
 psg word
-@sFhjQ7p7CmbGTOMw!o^
+ekwenibueadajcfkkwtt
 ```
 
 If you need help with a specific command:
@@ -34,4 +32,4 @@ If you need help with a specific command:
 psg [command] --help
 ```
 
-For more information about the use and further customization of the generated passphrases and passwords, check out the full [documentation](https://github.com/lucasherediadv/psg/blob/main/doc/psg.md).
+For more information about usage and further customization of the generated passphrases and passwords, check out the full [documentation](https://github.com/lucasherediadv/psg/blob/main/doc/psg.md).

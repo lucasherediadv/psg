@@ -4,7 +4,7 @@ Passphrase and password generator
 
 ### Synopsis
 
-Generate secure passphrases and passwords
+Generates memorable passphrases and cryptographically secure passwords
 
 ### Options
 
