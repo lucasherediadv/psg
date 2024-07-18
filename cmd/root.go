@@ -11,7 +11,7 @@ var rootCmd = &cobra.Command{
 	Use:     "psg",
 	Short:   "Passphrase and password generator",
 	Long:    `Generates memorable passphrases and cryptographically secure passwords`,
-	Version: "1.2.1",
+	Version: "1.2.3",
 }
 
 func Execute() error {
