@@ -31,5 +31,3 @@ If you need help with a specific command:
 ```
 psg [command] --help
 ```
-
-For more information about usage and further customization of the generated passphrases and passwords, check out the full [documentation](https://github.com/lucasherediadv/psg/blob/main/doc/psg.md).
